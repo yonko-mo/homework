@@ -49,7 +49,7 @@ void main() {
       case '3':
         stdout.write("Enter note title: ");
         String title = stdin.readLineSync() ?? '';
-        var note = notesApp.searchForANoteByTitle(title);
+        var note = notesApp.searchByTitle(title);
         if (note != null) {
           print("Title: ${note.title}");
           print("Content: ${note.content}");

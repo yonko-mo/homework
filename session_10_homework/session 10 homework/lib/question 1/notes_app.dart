@@ -19,7 +19,7 @@ class NotesApp {
     }
   }
 
-  Note? searchForANoteByTitle(String title) {
+  Note? searchByTitle(String title) {
     for (var note in _notes) {
       if (note.title == title) {
         return note;
