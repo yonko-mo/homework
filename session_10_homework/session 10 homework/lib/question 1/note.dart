@@ -1,10 +1,9 @@
 class Note {
-  int _id = 0;
   late String _title;
   late String _content;
   late DateTime _dateCreatedAt;
 
-  Note(this._id, {required String title, required String content}) {
+  Note({required String title, required String content}) {
     if (title.trim().isEmpty) {
       throw Exception("Title cannot be empty");
     }
@@ -32,7 +31,6 @@ class Note {
     _content = newContent;
   }
 
-  int get id => _id;
   String get title => _title;
   String get content => _content;
   DateTime get dateCreatedAt => _dateCreatedAt;
