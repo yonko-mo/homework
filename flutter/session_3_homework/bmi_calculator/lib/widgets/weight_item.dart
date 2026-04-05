@@ -5,11 +5,13 @@ class WeightItem extends StatefulWidget {
   const WeightItem({super.key});
 
   @override
-  State<WeightItem> createState() => _WeightItemState();
+  State<WeightItem> createState() => WeightItemState();
 }
 
-class _WeightItemState extends State<WeightItem> {
+class WeightItemState extends State<WeightItem> {
   int _weight = 60;
+
+  int getWeight() => _weight;
 
   @override
   Widget build(BuildContext context) {

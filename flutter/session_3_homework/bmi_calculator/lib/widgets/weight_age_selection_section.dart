@@ -3,15 +3,18 @@ import 'package:bmi_calculator/widgets/weight_item.dart';
 import 'package:flutter/material.dart';
 
 class WeightAgeSelectionSection extends StatelessWidget {
-  const WeightAgeSelectionSection({super.key});
+  final GlobalKey<WeightItemState>? weightKey;
+  final GlobalKey<AgeItemState>? ageKey;
+
+  const WeightAgeSelectionSection({super.key, this.weightKey, this.ageKey});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        Expanded(child: WeightItem()),
-        SizedBox(width: 32),
-        Expanded(child: AgeItem()),
+        Expanded(child: WeightItem(key: weightKey)),
+        const SizedBox(width: 32),
+        Expanded(child: AgeItem(key: ageKey)),
       ],
     );
   }

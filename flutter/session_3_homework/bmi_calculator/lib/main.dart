@@ -15,7 +15,7 @@ class BmiCalculatorApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xff04061d),
       ),
       debugShowCheckedModeBanner: false,
-      home:  BmiCalculatorPage(),
+      home: BmiCalculatorPage(),
     );
   }
 }

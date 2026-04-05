@@ -5,26 +5,31 @@ class GenderSelectionSection extends StatefulWidget {
   const GenderSelectionSection({super.key});
 
   @override
-  State<GenderSelectionSection> createState() => _GenderSelectionSectionState();
+  State<GenderSelectionSection> createState() => GenderSelectionSectionState();
 }
 
-class _GenderSelectionSectionState extends State<GenderSelectionSection> {
+class GenderSelectionSectionState extends State<GenderSelectionSection> {
   final Color _selectedColor = const Color(0xff090b24);
   final Color _unselectedColor = const Color(0xff17172f);
 
-  bool _isMaleSelected = true;
+  String _gender = 'Male';
+
+  String getGender() => _gender;
+
   @override
   Widget build(BuildContext context) {
+    final bool isMaleSelected = _gender == 'Male';
+
     return Row(
       children: [
         Expanded(
           child: GenderItem(
             onTap: () {
               setState(() {
-                _isMaleSelected = true;
+                _gender = 'Male';
               });
             },
-            color: _isMaleSelected ? _selectedColor : _unselectedColor,
+            color: isMaleSelected ? _selectedColor : _unselectedColor,
             icon: Icons.male,
             label: 'MALE',
           ),
@@ -34,10 +39,10 @@ class _GenderSelectionSectionState extends State<GenderSelectionSection> {
           child: GenderItem(
             onTap: () {
               setState(() {
-                _isMaleSelected = false;
+                _gender = 'Female';
               });
             },
-            color: !_isMaleSelected ? _selectedColor : _unselectedColor,
+            color: !isMaleSelected ? _selectedColor : _unselectedColor,
             icon: Icons.female,
             label: 'FEMALE',
           ),

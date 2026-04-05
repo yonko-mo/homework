@@ -3,15 +3,20 @@ import 'package:bmi_calculator/screens/bmi_result_page.dart';
 import 'package:bmi_calculator/widgets/calculate_button.dart';
 import 'package:bmi_calculator/widgets/gender_selection_section.dart';
 import 'package:bmi_calculator/widgets/height_selection_section.dart';
+import 'package:bmi_calculator/widgets/age_item.dart';
+import 'package:bmi_calculator/widgets/weight_item.dart';
 import 'package:bmi_calculator/widgets/weight_age_selection_section.dart';
 import 'package:flutter/material.dart';
 
 class BmiCalculatorPage extends StatelessWidget {
-  double height = 174;
-  int weight = 60;
-  int age = 29;
-
   BmiCalculatorPage({super.key});
+
+  final GlobalKey<GenderSelectionSectionState> _genderKey =
+      GlobalKey<GenderSelectionSectionState>();
+  final GlobalKey<HeightSelectionSectionState> _heightKey =
+      GlobalKey<HeightSelectionSectionState>();
+  final GlobalKey<WeightItemState> _weightKey = GlobalKey<WeightItemState>();
+  final GlobalKey<AgeItemState> _ageKey = GlobalKey<AgeItemState>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +37,31 @@ class BmiCalculatorPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const Expanded(child: GenderSelectionSection()),
+              Expanded(
+                child: GenderSelectionSection(key: _genderKey),
+              ),
               const SizedBox(height: 16),
-              const Expanded(child: HeightSelectionSection()),
+              Expanded(
+                child: HeightSelectionSection(key: _heightKey),
+              ),
               const SizedBox(height: 16),
-              const Expanded(child: WeightAgeSelectionSection()),
+              Expanded(
+                child: WeightAgeSelectionSection(
+                  weightKey: _weightKey,
+                  ageKey: _ageKey,
+                ),
+              ),
               const SizedBox(height: 16),
               CalculateButton(
-                height: height,
-                weight: weight,
-                age: age,
-
+                height: _heightKey.currentState?.getHeight() ?? 174,
+                weight: _weightKey.currentState?.getWeight() ?? 60,
+                age: _ageKey.currentState?.getAge() ?? 29,
                 onCalculate: () {
+                  final gender = _genderKey.currentState?.getGender() ?? 'Male';
+                  final height = _heightKey.currentState?.getHeight() ?? 174;
+                  final weight = _weightKey.currentState?.getWeight() ?? 60;
+                  final age = _ageKey.currentState?.getAge() ?? 29;
+
                   final result = BmiCalculator.calculate(
                     height: height,
                     weight: weight,
@@ -53,6 +71,7 @@ class BmiCalculatorPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => BmiResultPage(
+                        gender: gender,
                         bmi: result.bmi,
                         status: result.status,
                         height: height,

@@ -5,11 +5,13 @@ class HeightSelectionSection extends StatefulWidget {
   const HeightSelectionSection({super.key});
 
   @override
-  State<HeightSelectionSection> createState() => _HeightSelectionSectionState();
+  State<HeightSelectionSection> createState() => HeightSelectionSectionState();
 }
 
-class _HeightSelectionSectionState extends State<HeightSelectionSection> {
+class HeightSelectionSectionState extends State<HeightSelectionSection> {
   double _height = 174;
+
+  double getHeight() => _height;
 
   @override
   Widget build(BuildContext context) {

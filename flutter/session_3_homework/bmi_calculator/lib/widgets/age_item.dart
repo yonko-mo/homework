@@ -5,11 +5,14 @@ class AgeItem extends StatefulWidget {
   const AgeItem({super.key});
 
   @override
-  State<AgeItem> createState() => _AgeItemState();
+  State<AgeItem> createState() => AgeItemState();
 }
 
-class _AgeItemState extends State<AgeItem> {
+class AgeItemState extends State<AgeItem> {
   int _age = 29;
+
+  int getAge() => _age;
+
   @override
   Widget build(BuildContext context) {
     return ValueChangedItem(
