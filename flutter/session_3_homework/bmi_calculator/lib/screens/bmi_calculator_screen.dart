@@ -1,5 +1,5 @@
 import 'package:bmi_calculator/models/bmi_model.dart';
-import 'package:bmi_calculator/screens/bmi_result_page.dart';
+import 'package:bmi_calculator/screens/bmi_result_screen.dart';
 import 'package:bmi_calculator/widgets/calculate_button.dart';
 import 'package:bmi_calculator/widgets/gender_selection_section.dart';
 import 'package:bmi_calculator/widgets/height_selection_section.dart';
@@ -8,8 +8,8 @@ import 'package:bmi_calculator/widgets/weight_item.dart';
 import 'package:bmi_calculator/widgets/weight_age_selection_section.dart';
 import 'package:flutter/material.dart';
 
-class BmiCalculatorPage extends StatelessWidget {
-  BmiCalculatorPage({super.key});
+class BmiCalculatorScreen extends StatelessWidget {
+  BmiCalculatorScreen({super.key});
 
   final GlobalKey<GenderSelectionSectionState> _genderKey =
       GlobalKey<GenderSelectionSectionState>();
@@ -37,13 +37,9 @@ class BmiCalculatorPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Expanded(
-                child: GenderSelectionSection(key: _genderKey),
-              ),
+              Expanded(child: GenderSelectionSection(key: _genderKey)),
               const SizedBox(height: 16),
-              Expanded(
-                child: HeightSelectionSection(key: _heightKey),
-              ),
+              Expanded(child: HeightSelectionSection(key: _heightKey)),
               const SizedBox(height: 16),
               Expanded(
                 child: WeightAgeSelectionSection(
@@ -70,7 +66,7 @@ class BmiCalculatorPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BmiResultPage(
+                      builder: (context) => BmiResultScreen(
                         gender: gender,
                         bmi: result.bmi,
                         status: result.status,

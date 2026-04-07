@@ -7,7 +7,7 @@ import 'package:bmi_calculator/widgets/result_widgets/details_card_widget.dart';
 import 'package:bmi_calculator/widgets/result_widgets/back_button_widget.dart';
 import 'package:bmi_calculator/widgets/result_widgets/result_app_bar_widget.dart';
 
-class BmiResultPage extends StatelessWidget {
+class BmiResultScreen extends StatelessWidget {
   final String gender;
   final double bmi;
   final String status;
@@ -15,7 +15,7 @@ class BmiResultPage extends StatelessWidget {
   final int weight;
   final int age;
 
-  const BmiResultPage({
+  const BmiResultScreen({
     super.key,
     required this.gender,
     required this.bmi,
