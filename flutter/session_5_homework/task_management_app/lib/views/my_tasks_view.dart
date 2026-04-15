@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_tasks_app/models/task_model.dart';
-import 'package:my_tasks_app/widgets/no_tasks_section.dart';
-import 'package:my_tasks_app/widgets/task_card.dart';
-import 'package:my_tasks_app/widgets/task_input_field.dart';
+import 'package:task_management_app/models/task_model.dart';
+import 'package:task_management_app/widgets/no_tasks_section.dart';
+import 'package:task_management_app/widgets/task_card.dart';
+import 'package:task_management_app/widgets/task_input_field.dart';
 
 class MyTasksView extends StatefulWidget {
   const MyTasksView({super.key});
