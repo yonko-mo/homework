@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TaskInputField extends StatelessWidget {
+class TaskTextFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onAddTask;
 
-  const TaskInputField({
+  const TaskTextFieldWidget({
     super.key,
     required this.controller,
     required this.onAddTask,
@@ -28,19 +28,17 @@ class TaskInputField extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: const Color(0xffedf3f1),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: TextField(
-                controller: controller,
-                decoration: const InputDecoration(
-                  hintText: 'Add a new task...',
-                  hintStyle: TextStyle(color: Color(0xff434947), fontSize: 16),
-                  border: InputBorder.none,
+            child: TextField(
+              controller: controller,
+              decoration: const InputDecoration(
+                filled: true,
+                fillColor: Color(0xffedf3f1),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderSide: BorderSide.none,
                 ),
+                hintText: 'Add a new task...',
+                hintStyle: TextStyle(color: Color(0xff434947), fontSize: 16),
               ),
             ),
           ),
