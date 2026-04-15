@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:task_management_app/models/task_model.dart';
+import 'package:task_management_app/models/task_managment.dart';
 import 'package:task_management_app/widgets/task_widget.dart';
 
 class TasksListViewWidget extends StatefulWidget {
-  final List<TaskModel> tasks;
+  final TaskManagment taskManagment;
   final void Function() updateTasks;
 
   const TasksListViewWidget({
     super.key,
-    required this.tasks,
+    required this.taskManagment,
     required this.updateTasks,
   });
 
@@ -20,14 +20,14 @@ class _TasksListViewWidgetState extends State<TasksListViewWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: widget.tasks.length,
+      itemCount: widget.taskManagment.tasksCount,
       itemBuilder: (context, index) {
         return TaskWidget(
-          task: widget.tasks[index],
-          tasks: widget.tasks,
+          task: widget.taskManagment.tasks[index],
+          tasks: widget.taskManagment.tasks,
           onDelete: () {
-            widget.tasks.remove(widget.tasks[index]);
-            if (widget.tasks.isEmpty) {
+            widget.taskManagment.removeTask(widget.taskManagment.tasks[index]);
+            if (widget.taskManagment.isEmpty) {
               widget.updateTasks();
             } else {
               setState(() {});
