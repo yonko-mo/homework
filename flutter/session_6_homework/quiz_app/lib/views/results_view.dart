@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/models/question_manager.dart';
 import 'package:quiz_app/theme/colors.dart';
 import 'package:quiz_app/theme/text_styles.dart';
+import 'package:quiz_app/views/questions_view.dart';
 import 'package:quiz_app/widgets/custom_background_container.dart';
 
 class ResultsView extends StatelessWidget {
@@ -211,7 +212,10 @@ class ResultsView extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     questionManager.resetQuiz();
-                    Navigator.of(context).pop(true);
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => const QuestionsView()),
+                      (route) => false,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.secondaryColor,
