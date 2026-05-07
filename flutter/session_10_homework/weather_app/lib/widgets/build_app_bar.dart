@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:weather_app/model/weather_model.dart';
+import 'package:weather_app/utils/weather_theme.dart';
+
+AppBar buildAppBar({
+  List<Widget>? actions,
+  required String title,
+  WeatherModel? weatherModel,
+}) {
+  return AppBar(
+    backgroundColor: WeatherTheme.getThemeColor(
+      weatherModel?.weatherCondition,
+    ).shade500,
+    foregroundColor: Colors.white,
+    title: const Text('Weather App'),
+    actions: actions,
+  );
+}

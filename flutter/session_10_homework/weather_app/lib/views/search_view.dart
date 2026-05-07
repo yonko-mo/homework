@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/constants/colors.dart';
-import 'package:weather_app/utils/weather_theme.dart';
+import 'package:weather_app/widgets/build_app_bar.dart';
 import 'package:weather_app/widgets/city_search_text_field.dart';
 
 class SearchView extends StatelessWidget {
@@ -9,26 +8,7 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: WeatherTheme.getThemeColor(null).shade500,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.textWhite,
-            size: 30,
-          ),
-        ),
-        title: const Text(
-          'Search a City',
-          style: TextStyle(
-            color: AppColors.textWhite,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      appBar: buildAppBar(title: 'Search a City'),
       body: const Center(child: CitySearchTextField()),
     );
   }
