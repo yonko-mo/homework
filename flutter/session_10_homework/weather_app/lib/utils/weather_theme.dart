@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class WeatherTheme {
   static MaterialColor getThemeColor(String? day) {
-    if (day == null) return Colors.blue;
-
+    if (day == null) {
+      return Colors.blue;
+    }
     final condition = day.toLowerCase();
 
     if (condition.contains('sunny') || condition.contains('clear')) {
@@ -29,7 +30,7 @@ class WeatherTheme {
       return Colors.blueGrey;
     }
 
-    return Colors.amber;
+    return Colors.blue;
   }
 
   static LinearGradient getBackgroundGradient(String? day) {
@@ -38,7 +39,7 @@ class WeatherTheme {
     return LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: [color.shade600, color.shade100],
+      colors: [color.shade600, color.shade400, color.shade50],
     );
   }
 }

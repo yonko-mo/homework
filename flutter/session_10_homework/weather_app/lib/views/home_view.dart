@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/utils/weather_theme.dart';
 import 'package:weather_app/views/search_view.dart';
 import 'package:weather_app/widgets/build_app_bar.dart';
 import 'package:weather_app/widgets/no_weather_widget.dart';
 import 'package:weather_app/widgets/searched_weather_widget.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({super.key});
+  final void Function(MaterialColor color)? updateTheme;
+  const HomeView({super.key, required this.updateTheme});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -19,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: buildAppBar(
         title: 'Weather App',
+        color: Theme.of(context).primaryColor,
         weatherModel: weatherModel,
         actions: [
           IconButton(
@@ -34,6 +37,11 @@ class _HomeViewState extends State<HomeView> {
                   weatherModel = null;
                 }
               });
+              if (weatherModel != null) {
+                widget.updateTheme!(
+                  WeatherTheme.getThemeColor(weatherModel!.conditionText),
+                );
+              }
             },
             icon: const Icon(Icons.search),
           ),

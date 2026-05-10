@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/services/weather_service.dart';
 
 class CitySearchTextField extends StatefulWidget {
@@ -22,14 +21,22 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
             _cityName = value;
           },
           onSubmitted: (value) async {
-            WeatherModel weatherModel = await WeatherService(
-              Dio(),
-            ).getCurrentWeather(cityName: value);
+            final weatherService = WeatherService(Dio());
+            final weatherModel = await weatherService.getCurrentWeather(
+              cityName: value,
+              context: context,
+            );
 
-            // ignore: use_build_context_synchronously
-            Navigator.pop(context, weatherModel);
+            if (weatherModel != null) {
+              // ignore: use_build_context_synchronously
+              Navigator.pop(context, weatherModel);
+            }
           },
           decoration: InputDecoration(
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+            ),
             suffixIcon: IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {

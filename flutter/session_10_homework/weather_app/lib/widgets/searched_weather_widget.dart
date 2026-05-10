@@ -48,10 +48,7 @@ class SearchedWeatherWidget extends StatelessWidget {
                 children: [
                   Text(
                     'maxTemp : ${weatherModel.maxTempC.round()}°C',
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   Text(
                     'minTemp : ${weatherModel.minTempC.round()}°C',
