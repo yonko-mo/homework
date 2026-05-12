@@ -33,26 +33,28 @@ class _HomeViewState extends State<HomeView> {
           ),
         ],
       ),
-      body: BlocBuilder<GetWeatherCubit, WeatherState>(
-        builder: (context, state) {
-          if (state is WeatherInitialState) {
-            return const NoWeatherBody();
-          } else if (state is WeatherLoadedState) {
-            return SearchedWeatherBody(weather: state.weatherModel);
-          } else if (state is WeatherFailureState) {
-            // this is a method instead of using bloc listener because we want to show the error message every time the state is WeatherFailureState not only the first time it is emitted
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.errorModel.message),
-                  duration: const Duration(seconds: 4),
-                ),
-              );
-            });
-            return const NoWeatherBody();
+      body: BlocListener<GetWeatherCubit, WeatherState>(
+        listener: (context, state) {
+          if (state is WeatherFailureState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorModel.message),
+                duration: const Duration(seconds: 4),
+              ),
+            );
           }
-          return const NoWeatherBody();
         },
+        child: BlocBuilder<GetWeatherCubit, WeatherState>(
+          builder: (context, state) {
+            if (state is WeatherInitialState) {
+              return const NoWeatherBody();
+            } else if (state is WeatherLoadedState) {
+              return SearchedWeatherBody(weather: state.weatherModel);
+            } else {
+              return const NoWeatherBody();
+            }
+          },
+        ),
       ),
     );
   }
