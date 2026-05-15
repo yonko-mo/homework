@@ -10,6 +10,8 @@ A simple and elegant Flutter quiz application that allows users to take quizzes 
 - 🎯 **Multi-Platform Support**: Works on Android, iOS, Web, Windows, macOS, and Linux
 - 🌈 **Custom Theming**: Gradient backgrounds and custom typography
 
+https://github.com/user-attachments/assets/bed1d8d6-2cff-4a43-bc93-119e3648564a
+
 ## Project Structure
 
 ```
