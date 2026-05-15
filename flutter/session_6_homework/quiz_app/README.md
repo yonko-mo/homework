@@ -1,17 +1,57 @@
-# quiz_app
+# Quiz App
 
-A new Flutter project.
+A simple and elegant Flutter quiz application that allows users to take quizzes with multiple-choice and single-choice questions, track their performance, and view results.
+
+## Features
+
+- 📝 **Quiz Functionality**: Take quizzes with multiple-choice and single-choice questions
+- 🎨 **Beautiful UI**: Modern and responsive user interface with custom themes
+- 📊 **Results Tracking**: View your quiz performance with detailed results
+- 🎯 **Multi-Platform Support**: Works on Android, iOS, Web, Windows, macOS, and Linux
+- 🌈 **Custom Theming**: Gradient backgrounds and custom typography
+
+## Project Structure
+
+```
+lib/
+├── main.dart              # Application entry point
+├── constants/             # App constants and assets
+├── models/                # Data models (questions, answers, quiz management)
+├── theme/                 # App theming (colors, gradients, text styles)
+├── views/                 # Main screens (quiz, results, start)
+└── widgets/               # Reusable UI components
+```
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK (latest version)
+- Dart SDK
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository or navigate to the project directory
+2. Get dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+3. Run the app:
+   ```bash
+   flutter run
+   ```
+
+### Running on Different Platforms
+
+- **Android**: `flutter run -d android`
+- **iOS**: `flutter run -d ios`
+- **Web**: `flutter run -d chrome`
+- **Windows**: `flutter run -d windows`
+- **macOS**: `flutter run -d macos`
+- **Linux**: `flutter run -d linux`
+
+## Project Dependencies
+
+See `pubspec.yaml` for a complete list of dependencies.
