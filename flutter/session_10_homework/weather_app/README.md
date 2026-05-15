@@ -11,6 +11,10 @@ A simple Flutter weather application that fetches and displays real-time weather
 - Error handling with snackbar notifications
 - Dynamic gradient backgrounds based on weather conditions
 
+## Demo
+
+https://github.com/user-attachments/assets/14801b4d-5483-4ca2-822e-7218f8a65072
+
 ## Technologies Used
 
 - **Flutter** - Cross-platform mobile framework
