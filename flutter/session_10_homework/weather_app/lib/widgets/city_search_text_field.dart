@@ -3,17 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
 
-class CitySearchTextField extends StatefulWidget {
+class CitySearchTextField extends StatelessWidget {
   const CitySearchTextField({super.key});
 
   @override
-  State<CitySearchTextField> createState() => _CitySearchTextFieldState();
-}
-
-class _CitySearchTextFieldState extends State<CitySearchTextField> {
-  String _cityName = '';
-  @override
   Widget build(BuildContext context) {
+    String cityName = '';
     return BlocListener<GetWeatherCubit, WeatherState>(
       listener: (context, state) {
         if (state is WeatherLoadedState) {
@@ -25,7 +20,7 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
         child: Center(
           child: TextField(
             onChanged: (value) {
-              _cityName = value;
+              cityName = value;
             },
             onSubmitted: (value) {
               var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
@@ -39,7 +34,7 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
               suffixIcon: IconButton(
                 icon: const Icon(Icons.search),
                 onPressed: () {
-                  _cityName;
+                  cityName;
                 },
               ),
               contentPadding: const EdgeInsets.symmetric(

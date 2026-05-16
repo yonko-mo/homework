@@ -9,14 +9,9 @@ void main() {
   runApp(const WeatherApp());
 }
 
-class WeatherApp extends StatefulWidget {
+class WeatherApp extends StatelessWidget {
   const WeatherApp({super.key});
 
-  @override
-  State<WeatherApp> createState() => _WeatherAppState();
-}
-
-class _WeatherAppState extends State<WeatherApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
