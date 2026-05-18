@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app/cubits/get_weather_cubit/fetch_weather_cubit.dart';
 import 'package:weather_app/models/weather_model.dart';
 import 'package:weather_app/utils/get_theme_color.dart';
 
@@ -10,7 +10,7 @@ class SearchedWeatherBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WeatherModel weatherModel = BlocProvider.of<GetWeatherCubit>(
+    WeatherModel weatherModel = BlocProvider.of<FetchWeatherCubit>(
       context,
     ).weatherModel!;
     return Container(

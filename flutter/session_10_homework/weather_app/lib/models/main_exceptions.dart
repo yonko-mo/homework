@@ -1,23 +1,5 @@
 import 'package:dio/dio.dart';
 
-class ErrorModel {
-  final int code;
-  final String message;
-
-  ErrorModel({required this.code, required this.message});
-
-  factory ErrorModel.fromJson(Map<String, dynamic> json) {
-    return ErrorModel(
-      code: json['code'] as int,
-      message: json['message'] as String,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {'code': code, 'message': message};
-  }
-}
-
 class MainException implements Exception {
   final String message;
 
@@ -53,8 +35,10 @@ class MainException implements Exception {
     try {
       if (responseData != null && responseData is Map<String, dynamic>) {
         if (responseData.containsKey('error')) {
-          final error = ErrorModel.fromJson(responseData['error']);
-          return error.message;
+          final error = responseData['error'];
+          if (error is Map<String, dynamic> && error.containsKey('message')) {
+            return error['message'] as String;
+          }
         }
       }
     } catch (e) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
+import 'package:weather_app/cubits/get_weather_cubit/fetch_weather_cubit.dart';
+import 'package:weather_app/cubits/get_weather_cubit/fetch_weather_states.dart';
 
 class CitySearchTextField extends StatelessWidget {
   const CitySearchTextField({super.key});
@@ -9,9 +9,17 @@ class CitySearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String cityName = '';
-    return BlocListener<GetWeatherCubit, WeatherState>(
+    return BlocListener<FetchWeatherCubit, FetchWeatherState>(
       listener: (context, state) {
-        if (state is WeatherLoadedState) {
+        if (state is FetchWeatherFailureState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage),
+              duration: const Duration(seconds: 4),
+            ),
+          );
+        }
+        if (state is FetchWeatherLoadedState) {
           Navigator.pop(context);
         }
       },
@@ -23,8 +31,8 @@ class CitySearchTextField extends StatelessWidget {
               cityName = value;
             },
             onSubmitted: (value) {
-              var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
-              getWeatherCubit.getWeather(cityName: value);
+              var getWeatherCubit = BlocProvider.of<FetchWeatherCubit>(context);
+              getWeatherCubit.fetchWeather(cityName: value);
             },
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
