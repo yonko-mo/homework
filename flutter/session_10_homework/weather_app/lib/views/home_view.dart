@@ -29,6 +29,7 @@ class HomeView extends StatelessWidget {
       ),
       body: weatherModel == null
           ? const NoWeatherBody()
+          // we are passing the weatherModel to the SearchedWeatherBody widget because we want SearchedWeatherBody not to be constant because it depends on the weatherModel which is not constant
           : SearchedWeatherBody(weather: weatherModel!),
     );
   }
